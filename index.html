@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#111827" />
+    <title>Whack-a-Mole | GameDemo</title>
+  </head>
+  <body>
+    <main class="app-shell">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">GameDemo / arcade lab</p>
+          <h1>Whack-a-Mole</h1>
+        </div>
+        <label class="debug-switch">
+          <span>Debug Mode</span>
+          <input id="debug-toggle" type="checkbox" role="switch" aria-checked="false" />
+          <span class="switch-track" aria-hidden="true"><span></span></span>
+        </label>
+      </header>
+
+      <div id="ui-error" class="notice notice-error" role="alert" hidden></div>
+      <div id="game-status" class="notice notice-info" role="status">Connecting to game engine…</div>
+
+      <section class="game-layout" aria-label="Whack-a-Mole game">
+        <div class="game-card">
+          <div class="stats" data-debug-label="Score and timer">
+            <div class="stat"><span class="stat-label">Score</span><strong id="score">0</strong></div>
+            <div class="stat timer-stat"><span class="stat-label">Time left</span><strong><span id="timer">30</span><small>s</small></strong></div>
+          </div>
+          <div id="grid" class="mole-grid" role="grid" aria-label="Mole holes" data-debug-label="Mole grid">
+            <button class="hole" data-hole="0" role="gridcell" aria-label="Hole 1"></button>
+            <button class="hole" data-hole="1" role="gridcell" aria-label="Hole 2"></button>
+            <button class="hole" data-hole="2" role="gridcell" aria-label="Hole 3"></button>
+            <button class="hole" data-hole="3" role="gridcell" aria-label="Hole 4"></button>
+            <button class="hole" data-hole="4" role="gridcell" aria-label="Hole 5"></button>
+            <button class="hole" data-hole="5" role="gridcell" aria-label="Hole 6"></button>
+            <button class="hole" data-hole="6" role="gridcell" aria-label="Hole 7"></button>
+            <button class="hole" data-hole="7" role="gridcell" aria-label="Hole 8"></button>
+            <button class="hole" data-hole="8" role="gridcell" aria-label="Hole 9"></button>
+          </div>
+          <div class="controls" data-debug-label="Game controls">
+            <button id="start" class="button button-primary">Start game</button>
+            <button id="end" class="button button-secondary">End game</button>
+            <button id="restart" class="button button-secondary">Restart</button>
+          </div>
+          <p id="game-state" class="game-state">Ready when you are.</p>
+        </div>
+
+        <aside id="debug-panel" class="debug-panel" aria-label="Debug tools" hidden>
+          <div class="panel-heading"><div><p class="eyebrow">Diagnostics</p><h2>Debug toolkit</h2></div><span class="live-dot">LIVE</span></div>
+          <p class="muted">Select an element in the game to capture context for a report.</p>
+          <label for="selected-element">Selected element</label>
+          <input id="selected-element" readonly placeholder="Click an outlined element" />
+          <label for="problem-description">Problem description</label>
+          <textarea id="problem-description" rows="3" placeholder="What went wrong?"></textarea>
+          <div class="debug-actions">
+            <button id="download-report" class="button button-primary">Download bug report</button>
+            <button id="export-log" class="button button-secondary">Export log</button>
+          </div>
+          <div class="log-heading"><h3>In-app log</h3><span id="log-count">0 events</span></div>
+          <pre id="diagnostic-log" class="diagnostic-log" aria-live="polite">No events yet.</pre>
+        </aside>
+      </section>
+    </main>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
